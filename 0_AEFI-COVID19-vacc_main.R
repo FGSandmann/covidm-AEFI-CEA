@@ -8,14 +8,15 @@
 ## 0) set-up
 ####################
 
+# UPDATE THIS TO FILEPATH OF PROJECT/OTHER SCRIPT FILES
+econ_path <- "~/42_Adverse-events/02_Code/" 
+
 # load epi model (covidm)
-cm_path = "C:/Users/Frank.Sandmann/Desktop/covidm_for_fitting/" # UPDATE THIS TO COVIDM FILEPATH
+cm_path = paste0(econ_path, "covidm_for_fitting/")
 cm_force_rebuild = FALSE;
 cm_build_verbose = TRUE;
 cm_version = 2; 
 source(paste0(cm_path, "/R/covidm.R"))
-
-econ_path <- "H:/Coronavirus/COVID19-vaccine-value/42_Adverse-events/02_Code/" # UPDATE THIS TO FILEPATH OF OTHER SCRIPT FILES
 
 # data wrangling for the econ analysis
 library(dplyr)
@@ -816,14 +817,14 @@ label_scen <-  c(Benefit     = "(A): health value (excl. costs)",
                  runA    = "V0: no vaccination", 
                  runB    = "V1: lower VE estimate,\n45-week protection", 
                  runC    = "V2: higher VE estimate,\n3-year protection",
-                 `15000` = "£15,000 per QALY", 
-                 `20000` = "£20,000 per QALY", 
-                 `30000` = "£30,000 per QALY", 
-                 `60000` = "£60,000 per QALY",
-                 `1e+05` = "£100,000 per QALY", 
-                 `1e-06` = "rare but fatal events\n(rate: 1 in 1 million, QALY loss: 4.9-23.0, costs: £17,328)", 
-                 `0.001` = "intermediate events\n(rate: 1 in 1000, QALY loss: 1.0, costs: £17,768)", 
-                 `0.9`   = "frequent but mild events\n(rate: 9 in 10, QALY loss: 0.0015, costs: £3)",
+                 `15000` = "Â£15,000 per QALY", 
+                 `20000` = "Â£20,000 per QALY", 
+                 `30000` = "Â£30,000 per QALY", 
+                 `60000` = "Â£60,000 per QALY",
+                 `1e+05` = "Â£100,000 per QALY", 
+                 `1e-06` = "rare but fatal events\n(rate: 1 in 1 million, QALY loss: 4.9-23.0, costs: Â£17,328)", 
+                 `0.001` = "intermediate events\n(rate: 1 in 1000, QALY loss: 1.0, costs: Â£17,768)", 
+                 `0.9`   = "frequent but mild events\n(rate: 9 in 10, QALY loss: 0.0015, costs: Â£3)",
                  `999`   = "no\nlockdown",
                  `998`   = "initial lockdowns\nonly",
                  `0-19`  = "0-19 y.",
@@ -1143,7 +1144,7 @@ p1 = p_AEFI %>%
 
 # add footnote
 title <- ggdraw() + 
-  draw_label(paste0("\nBenefit-risk ratios (`>?x`) indicate the benefit (and net benefit; dQALYs - dCosts/£20,000) of the vaccine over the harm (and net harm) of the AEFIs, discounted at 3.5% over 10 years.
+  draw_label(paste0("\nBenefit-risk ratios (`>?x`) indicate the benefit (and net benefit; dQALYs - dCosts/Â£20,000) of the vaccine over the harm (and net harm) of the AEFIs, discounted at 3.5% over 10 years.
                      V1: vaccination with 62% VE against symptomatic disease, 4% against asymptomatic infection (AstraZeneca-Oxford Uni. vaccine, low estimate); vaccine-induced protection of 45-weeks
                      V2: vaccination with 91% VE against symptomatic disease, 56% against asymptomatic infection (AstraZeneca-Oxford Uni. vaccine, high estimate); vaccine-induced protection of 3-years"),
              size=15, x = 1, y=0.78, hjust = 1) 
@@ -1194,7 +1195,7 @@ p1 = df_AEFI_incr5 %>%
 
 # add footnote
 title <- ggdraw() + 
-  draw_label(paste0("Benefit-risk ratios are positive when the benefit (and net benefit; dQALY_loss - dCosts/£20,000) of the vaccine exceeds the (net) harm of AEFIs, and negative when the (net) harm of AEFIs exceeds the (net) benefit of the vaccine.
+  draw_label(paste0("Benefit-risk ratios are positive when the benefit (and net benefit; dQALY_loss - dCosts/Â£20,000) of the vaccine exceeds the (net) harm of AEFIs, and negative when the (net) harm of AEFIs exceeds the (net) benefit of the vaccine.
                      V1: vaccination with 62% VE against symptomatic disease, 4% against asymptomatic infection (AstraZeneca-Oxford Uni. vaccine, low estimate); assumed vaccine-induced protection of 45-weeks
                      V2: vaccination with 91% VE against symptomatic disease, 56% against asymptomatic infection (AstraZeneca-Oxford Uni. vaccine, high estimate); assumed vaccine-induced protection of 3-years
                      X indicate the observed rates and severities of AEFIs of COVID-19 vaccines."),
@@ -1243,7 +1244,7 @@ p1 = df_AEFI_incr5 %>%
 
 # add footnote
 title <- ggdraw() + 
-  draw_label(paste0("Benefit-risk ratios are positive when the benefit (and net benefit; dQALY_loss - dCosts/£20,000) of the vaccine exceeds the (net) harm of AEFIs, and negative when the (net) harm of AEFIs exceeds the (net) benefit of the vaccine.
+  draw_label(paste0("Benefit-risk ratios are positive when the benefit (and net benefit; dQALY_loss - dCosts/Â£20,000) of the vaccine exceeds the (net) harm of AEFIs, and negative when the (net) harm of AEFIs exceeds the (net) benefit of the vaccine.
                      V1: vaccination with 62% VE against symptomatic disease, 4% against asymptomatic infection (AstraZeneca-Oxford Uni. vaccine, low estimate); assumed vaccine-induced protection of 45-weeks
                      V2: vaccination with 91% VE against symptomatic disease, 56% against asymptomatic infection (AstraZeneca-Oxford Uni. vaccine, high estimate); assumed vaccine-induced protection of 3-years
                      X indicate the observed rates and severities of AEFIs of COVID-19 vaccines."),
@@ -1517,7 +1518,7 @@ p3 = cowplot::plot_grid(p3a, p3b,
 
 # add footnote
 title <- ggdraw() + 
-  draw_label(paste0("Health values (and net health values; dQALYs - dCosts/£20,000), discounted at 3.5% over 10 years, are negative in case of health losses (and excess costs) compared to no-vaccination (A)
+  draw_label(paste0("Health values (and net health values; dQALYs - dCosts/Â£20,000), discounted at 3.5% over 10 years, are negative in case of health losses (and excess costs) compared to no-vaccination (A)
                      V1: vaccination with 62% VE against symptomatic disease, 4% against asymptomatic infection (AstraZeneca-Oxford Uni. vaccine, low estimate); vaccine-induced protection of 45-weeks
                      V2: vaccination with 91% VE against symptomatic disease, 56% against asymptomatic infection (AstraZeneca-Oxford Uni. vaccine, high estimate); vaccine-induced protection of 3-years"),
              size=15, x = 1, y=0.78, hjust = 1) 
@@ -1570,7 +1571,7 @@ p1 = df_AEFI_incr %>%
 
 # add footnote
 title <- ggdraw() + 
-  draw_label(paste0("Net health values (dQALYs - dCosts/£20,000; discounted at 3.5% over 10 years) are negative in case of health losses and excess costs of vaccination compared to no-vaccination (A).
+  draw_label(paste0("Net health values (dQALYs - dCosts/Â£20,000; discounted at 3.5% over 10 years) are negative in case of health losses and excess costs of vaccination compared to no-vaccination (A).
                      V1: vaccination with 62% VE against symptomatic disease, 4% against asymptomatic infection (AstraZeneca-Oxford Uni. vaccine, low estimate); vaccine-induced protection of 45-weeks
                      V2: vaccination with 91% VE against symptomatic disease, 56% against asymptomatic infection (AstraZeneca-Oxford Uni. vaccine, high estimate); vaccine-induced protection of 3-years
                      X indicate the known rates and severities of AEFIs of COVID-19 vaccines."),
@@ -1707,7 +1708,7 @@ p1 = df_AEFI_incr_delay %>%
 
 # add footnote
 title <- ggdraw() + 
-  draw_label(paste0("Benefit-risk ratios are positive when the benefit (and net benefit; dQALY_loss - dCosts/£20,000) of the vaccine exceeds the (net) harm of AEFIs, and negative when the (net) harm of AEFIs exceeds the (net) benefit of the vaccine.
+  draw_label(paste0("Benefit-risk ratios are positive when the benefit (and net benefit; dQALY_loss - dCosts/Â£20,000) of the vaccine exceeds the (net) harm of AEFIs, and negative when the (net) harm of AEFIs exceeds the (net) benefit of the vaccine.
                      V1: vaccination with 62% VE against symptomatic disease, 4% against asymptomatic infection (AstraZeneca-Oxford Uni. vaccine, low estimate); assumed vaccine-induced protection of 45-weeks
                      V2: vaccination with 91% VE against symptomatic disease, 56% against asymptomatic infection (AstraZeneca-Oxford Uni. vaccine, high estimate); assumed vaccine-induced protection of 3-years
                      X indicate the observed rates and severities of AEFIs of COVID-19 vaccines."),
