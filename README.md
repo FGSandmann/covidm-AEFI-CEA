@@ -33,7 +33,7 @@ All outcomes were expressed in terms of quality-adjusted life years, QALYs, the 
 
 ## Overview of files
 
-The main script of the analysis runs 3 vaccination scenarios, 3 physical distancing scenarios, and the threshold analysis of 7x14 scenarios of severity and risk of adverse events. On a current laptop (Core i7 2.8GHz CPU, 32GB RAM) this takes around 2-3 hours to run. The analysis requires covidM to be installed (originally developed by Nick Davies et al.). File paths in the scripts below will need to be updated to the directory of the project where it was saved.
+The main script of the analysis runs 3 vaccination scenarios, 3 physical distancing scenarios, and the threshold analysis of 7x14 scenarios of severity and risk of adverse events. On a current laptop (Core i7 2.8GHz CPU, 32GB RAM) this takes around 2-3 hours to run. The analysis requires covidM to be installed (originally developed by Nick Davies et al.). The version used here can be found in the folder "covidm_for_fitting". The file path in the main script will need to be updated to the directory of this project where it was saved.
 
 The scripts contain the following:
 
